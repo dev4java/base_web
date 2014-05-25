@@ -12,7 +12,7 @@ public class AdminUsrDaoImpl extends BaseDaoImpl<AdminUsr> implements AdminUsrDa
 
 	@Override
 	public AdminUsr getUsrByUsrName(String name) {
-		return this.queryForObject("from User where loginname = ?", new Object[] { name });
+		return this.queryForObject("from AdminUsr where loginName = ?", new Object[] { name });
 	}
 
 	@Override

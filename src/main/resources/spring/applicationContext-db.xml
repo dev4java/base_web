@@ -54,18 +54,24 @@
 				
 			</props>
 		</property>	
+		<property name="packagesToScan"> 
+		  <list> 
+		       <value>com.yswsoft.base_web.core.entity</value> 
+		  </list> 
+		</property> 
 		<!-- <property name="mappingResources">
 			<list>
-				<value>com/zoutaotech/bean/User.hbm.xml</value>
+				<value>com/yswsoft/bean/User.hbm.xml</value>
 			</list>
 		</property> -->
 	</bean>
+	
  <!-- 默认的注解映射的支持 -->
      <context:annotation-config />
-	 <context:component-scan base-package="com.yswsoft.base_web.core.entity" />  <!-- 自动扫描该包路径下的所有注解 -->
+	 <context:component-scan base-package="com.yswsoft.base_web.core.entity.*" />  <!-- 自动扫描该包路径下的所有注解 -->
 	<!-- 事务begin -->
 	<aop:config>
-		<aop:pointcut id="serviceMethods" expression="execution(* com.zoutaotech.dao.*.*(..))" />
+		<aop:pointcut id="serviceMethods" expression="execution(* com.yswsoft.base_web.core.dao.*.*(..))" />
 		<aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods" />
 	</aop:config>
 
@@ -96,7 +102,7 @@
 	</tx:advice>
 	
 	<aop:config>
-		<aop:pointcut expression="execution(* com.zoutaotech.dao.*.*(..))" id="tp"/>
+		<aop:pointcut expression="execution(* com.yswsoft.base_web.core.dao.*.*(..))" id="tp"/>
 		<aop:advisor advice-ref="tm" id="ta" pointcut-ref="tp"/>
 	</aop:config>
 	
